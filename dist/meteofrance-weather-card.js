@@ -459,9 +459,10 @@ class MeteofranceWeatherCard extends LitElement {
             </li>
           `
         : ""}
-          ${!this._config.hide_precipitation
+          ${daily.wind_speed !== undefined &&
+		daily.wind_speed !== null
         ? html`
-            <li class="wind_speed">
+            <li class="speed">
             ${Math.round(daily.wind_speed)} ${this.getUnit("wind_speed")}
             </li>
           `
@@ -586,8 +587,6 @@ class MeteofranceWeatherCard extends LitElement {
       case "precipitation_probability":
         return "%";
       case "speed":
-        return lengthUnit === "km" ? "km/h" : "mph";
-	  case "wind_speed":
         return lengthUnit === "km" ? "km/h" : "mph";
       default:
         return this.hass.config.unit_system[measure] || "";
