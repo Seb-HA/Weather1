@@ -34,8 +34,8 @@ const weatherIconsNight = {
   ...weatherIconsDay,
   clear: "night",
   sunny: "night",
-  partlycloudy: "cloudy-night-3",
-  "windy-variant": "cloudy-night-3",
+  partlycloudy: "night-partly-cloudy",
+  "windy-variant": "night-partly-cloudy",
 };
 
 const windDirections = [
