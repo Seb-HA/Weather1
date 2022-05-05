@@ -35,6 +35,7 @@ const weatherIconsNight = {
 //  ...weatherIconsDay,
   clear: "night",
   sunny: "night",
+  sunnynight: "night",
   cloudy: "cloudy-night-3",
   partlycloudy: "cloudy-night-3",
 };
@@ -97,7 +98,7 @@ window.customCards.push({
   name: "Carte Météo France par HACF",
   description: "Carte pour l'intégration Météo France.",
   preview: true,
-  documentationURL: "https://github.com/hacf-fr/lovelace-meteofrance-weather-card",
+  documentationURL: "https://github.com/vingerha/lovelace-meteofrance-weather-card",
 });
 
 const fireEvent = (node, type, detail, options) => {
