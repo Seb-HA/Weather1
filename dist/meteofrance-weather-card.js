@@ -35,6 +35,9 @@ const weatherIconsNight = {
   sunny: "night",
   rainy: "rainy-5",
   snowy: "snowy-6",
+  cloudy: "cloudy",
+  lightning: "thunder",
+  windy: "windy",
   partlycloudy: "cloudy-night-3",
   "windy-variant": "cloudy-night-3",
 };
