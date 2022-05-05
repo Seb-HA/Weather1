@@ -486,7 +486,7 @@ class MeteofranceWeatherCard extends LitElement {
     }
 
     const lang = this.hass.selectedLanguage || this.hass.language;
-    const isDaily = this.isHourlyForecast(forecast);
+    const isHourly = this.isHourlyForecast(forecast);
 
     this.numberElements++;
     return html`
@@ -499,7 +499,7 @@ class MeteofranceWeatherCard extends LitElement {
             : 5
         )
         .map(
-          (hourly) => this.renderDailyForecast2(hourly, lang, isHourly)
+          (hourly) => this.renderHourlyForecast2(hourly, lang, isHourly)
         )}
       </ul>`;
   }
