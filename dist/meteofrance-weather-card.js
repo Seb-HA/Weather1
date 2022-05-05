@@ -96,7 +96,7 @@ const rainForecastValues = new Map([
 
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "meteofrance-weather-card",
+  type: "meteofrance-weather-card-revamp",
   name: "Carte Météo France",
   description: "Carte pour l'intégration Météo France.",
   preview: true,
