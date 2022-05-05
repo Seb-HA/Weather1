@@ -154,8 +154,8 @@ export class MeteofranceWeatherCardEditor extends LitElement {
             ${this.renderSwitchOption("Show details", this._details, "details")}
             ${this.renderSwitchOption("Show one hour forecast", this._one_hour_forecast, "one_hour_forecast")}
             ${this.renderSwitchOption("Show alert", this._alert_forecast, "alert_forecast")}
-            ${this.renderSwitchOption("Show_forecast", this._forecast, "forecast")}
-			${this.renderSwitchOption("Hourly tweak", this._hourlyforecast, "hourlyforecast")}
+            ${this.renderSwitchOption("Show forecast", this._forecast, "forecast")}
+			${this.renderSwitchOption("Is hourly forecast", this._hourlyforecast, "hourlyforecast")}
           </ul>
           <!-- -->
           <paper-input
