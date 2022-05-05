@@ -5,7 +5,6 @@ const css = LitElement.prototype.css;
 const weatherIconsDay = {
   clear: "day",
   "clear-night": "night",
-  sunnynight: "night",
   cloudy: "cloudy",
   fog: "fog",
   hail: "rainy-7",
@@ -32,11 +31,11 @@ const DefaultSensors = [
 ];
 
 const weatherIconsNight = {
-//  ...weatherIconsDay,
+  ...weatherIconsDay,
   clear: "night",
   sunny: "night",
-  cloudy: "cloudy-night-3",
   partlycloudy: "cloudy-night-3",
+  "windy-variant": "cloudy-night-3",
 };
 
 const windDirections = [

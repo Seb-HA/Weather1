@@ -5,7 +5,6 @@ const css = LitElement.prototype.css;
 const weatherIconsDay = {
   clear: "day",
   "clear-night": "night",
-  sunnynight: "night",
   cloudy: "cloudy",
   fog: "fog",
   hail: "rainy-7",
@@ -32,11 +31,11 @@ const DefaultSensors = [
 ];
 
 const weatherIconsNight = {
-//  ...weatherIconsDay,
+  ...weatherIconsDay,
   clear: "night",
   sunny: "night",
-  cloudy: "cloudy-night-3",
   partlycloudy: "cloudy-night-3",
+  "windy-variant": "cloudy-night-3",
 };
 
 const windDirections = [
@@ -460,11 +459,12 @@ class MeteofranceWeatherCard extends LitElement {
             </li>
           `
         : ""}
-          ${daily.wind_speed !== undefined &&
-		daily.wind_speed !== null
+          ${!this._config.hide_precipitation &&
+        daily.precipitation_probability !== undefined &&
+        daily.precipitation_probability !== null
         ? html`
-            <li class="wind_speed">
-            ${Math.round(daily.wind_speed * 3.6)} ${this.getUnit("speed")}
+            <li class="precipitation_probability">
+            ${Math.round(daily.precipitation_probability)} ${this.getUnit("precipitation_probability")}
             </li>
           `
         : ""}
