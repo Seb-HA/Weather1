@@ -477,8 +477,8 @@ class MeteofranceWeatherCard extends LitElement {
   }
   
   
-  renderHourlyForecast(forecast) {
-    if (!forecast || forecast.length === 0) {
+  renderHourlyForecast(hourlyforecast) {
+    if (!hourlyforecast || hourlyforecast.length === 0) {
       return html``;
     }
 
@@ -487,8 +487,8 @@ class MeteofranceWeatherCard extends LitElement {
 
     this.numberElements++;
     return html`
-      <ul class="flow-row forecast ${this.numberElements > 1 ? " spacer" : ""}">
-        ${forecast
+      <ul class="flow-row `hourlyforecast ${this.numberElements > 1 ? " spacer" : ""}">
+        ${hourlyforecast
         .slice(
           0,
           this._config.number_of_forecasts
