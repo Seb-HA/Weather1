@@ -552,7 +552,7 @@ class MeteofranceWeatherCard extends LitElement {
 
   isHourlyForecast(forecast) {
     const diff = new Date(forecast[1].datetime) - new Date(forecast[0].datetime);
-    return diff > 2600000;
+    return diff;
   }  
   
   
