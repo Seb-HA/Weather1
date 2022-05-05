@@ -486,7 +486,7 @@ class MeteofranceWeatherCard extends LitElement {
 
     this.numberElements++;
     return html`
-      <ul class="flow-row `hourlyforecast ${this.numberElements > 1 ? " spacer" : ""}">
+      <ul class="flow-row hourlyforecast ${this.numberElements > 1 ? " spacer" : ""}">
         ${hourlyforecast
         .slice(
           0,
