@@ -520,9 +520,25 @@ class MeteofranceWeatherCard extends LitElement {
           hourly.condition.toLowerCase(),hourly.datetime
         )}') no-repeat; background-size: contain">
             </li>
-            <li class="highTemp">
+			<li class="highTemp">
             ${hourly.temperature}${this.getUnit("temperature")}
             </li>
+          ${hourly.templow !== undefined
+        ? html`
+            <li class="lowTemp">
+            ${hourly.templow}${this.getUnit("temperature")}
+            </li>
+          `
+        : ""}
+          ${!this._config.hide_precipitation &&
+        hourly.precipitation !== undefined &&
+        hourly.precipitation !== null
+        ? html`
+            <li class="precipitation">
+              ${Math.round(hourly.precipitation * 10) / 10} ${this.getUnit("precipitation")}
+            </li>
+          `
+        : ""}
           ${hourly.wind_speed !== undefined &&
 		hourly.wind_speed !== null
         ? html`
@@ -530,7 +546,7 @@ class MeteofranceWeatherCard extends LitElement {
             ${Math.round(hourly.wind_speed * 3.6)} ${this.getUnit("speed")}
             </li>
           `
-        : ""}			
+        : ""}
           </ul>
         </li>`;
   }
