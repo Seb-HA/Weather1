@@ -92,7 +92,7 @@ const rainForecastValues = new Map([
 window.customCards = window.customCards || [];
 window.customCards.push({
   type: "meteofrance-weather-card",
-  name: "Carte Météo France par HACF",
+  name: "Carte Météo France",
   description: "Carte pour l'intégration Météo France.",
   preview: true,
   documentationURL: "https://github.com/hacf-fr/lovelace-meteofrance-weather-card",
@@ -514,8 +514,8 @@ class MeteofranceWeatherCard extends LitElement {
           minute: "2-digit",
         })}
             </li>
-            <li class="icon" style="background: none, url('${this.getWeatherIcon(
-          hourly.condition.toLowerCase()
+            <li class="icon" style="background: none, url('${this.getWeatherIconHourly(
+          hourly.condition.toLowerCase(),hourly.datetime
         )}') no-repeat; background-size: contain">
             </li>
             <li class="highTemp">
@@ -537,15 +537,6 @@ class MeteofranceWeatherCard extends LitElement {
     const diff = new Date(forecast[1].datetime) - new Date(forecast[0].datetime);
     return diff < 3600001 ;
   }  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
 
   getOneHourForecast(rainForecastEntity) {
@@ -635,6 +626,17 @@ class MeteofranceWeatherCard extends LitElement {
       ? this._config.icons
       : "/local/community/lovelace-meteofrance-weather-card/icons/"
       }${sun && sun.state == "below_horizon"
+        ? weatherIconsNight[condition]
+        : weatherIconsDay[condition]
+      }.svg`;
+  }
+  getWeatherIconHourly(condition, datetimehourly) {
+	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting
+	var nextrising = this.hass.states["sun.sun"].attributes.next_rising  
+    return `${this._config.icons
+      ? this._config.icons
+      : "/local/community/lovelace-meteofrance-weather-card/icons/"
+      }${datetimehourly && datetimehourly > nextsetting && datetimehourly < nextrising
         ? weatherIconsNight[condition]
         : weatherIconsDay[condition]
       }.svg`;
