@@ -5,7 +5,6 @@ const css = LitElement.prototype.css;
 const weatherIconsDay = {
   clear: "day",
   "clear-night": "night",
-  sunnynight: "night",
   cloudy: "cloudy",
   fog: "fog",
   hail: "rainy-7",
@@ -32,12 +31,11 @@ const DefaultSensors = [
 ];
 
 const weatherIconsNight = {
-//  ...weatherIconsDay,
+  ...weatherIconsDay,
   clear: "night",
   sunny: "night",
-  sunnynight: "night",
-  cloudy: "cloudy-night-3",
   partlycloudy: "cloudy-night-3",
+  "windy-variant": "cloudy-night-3",
 };
 
 const windDirections = [
@@ -98,7 +96,7 @@ window.customCards.push({
   name: "Carte Météo France par HACF",
   description: "Carte pour l'intégration Météo France.",
   preview: true,
-  documentationURL: "https://github.com/vingerha/lovelace-meteofrance-weather-card",
+  documentationURL: "https://github.com/hacf-fr/lovelace-meteofrance-weather-card",
 });
 
 const fireEvent = (node, type, detail, options) => {
@@ -244,10 +242,9 @@ class MeteofranceWeatherCard extends LitElement {
 
         ${this.isSelected(this._config.one_hour_forecast)
         ? this.renderOneHourForecast() : ""}
-		
-		${this.isSelected(this._config.forecast)
+
+        ${this.isSelected(this._config.forecast)
         ? this.renderForecast(stateObj.attributes.forecast) : ""}
-	
       </ha-card>
     `;
   }
@@ -478,14 +475,7 @@ class MeteofranceWeatherCard extends LitElement {
     const diff = new Date(forecast[1].datetime) - new Date(forecast[0].datetime);
     return diff > 3600000;
   }
-  
-  
-  
-  
-  
-  
-  
-  
+
   getOneHourForecast(rainForecastEntity) {
     let rainForecastList = [];
     for (let [time, value] of Object.entries(
