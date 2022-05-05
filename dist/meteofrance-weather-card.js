@@ -242,9 +242,6 @@ class MeteofranceWeatherCard extends LitElement {
 
         ${this.isSelected(this._config.one_hour_forecast)
         ? this.renderOneHourForecast() : ""}
-
-        ${this.isSelected(this._config.forecast)
-        ? this.renderForecast(stateObj.attributes.forecast) : ""}
 		
 		${this.isSelected(this._config.hourlyforecast)
         ? this.renderHourlyForecast(stateObj.attributes.forecast) : ""}
