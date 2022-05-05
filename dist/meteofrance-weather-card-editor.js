@@ -65,6 +65,7 @@ export class MeteofranceWeatherCardEditor extends LitElement {
   get _forecast() {
     return this._config.forecast !== false;
   }
+  
   get _hourlyforecast() {
     return this._config.hourlyforecast !== false;
   }
@@ -154,7 +155,7 @@ export class MeteofranceWeatherCardEditor extends LitElement {
             ${this.renderSwitchOption("Show one hour forecast", this._one_hour_forecast, "one_hour_forecast")}
             ${this.renderSwitchOption("Show alert", this._alert_forecast, "alert_forecast")}
             ${this.renderSwitchOption("Show forecast", this._forecast, "forecast")}
-			${this.renderSwitchOption("Tweak hourly forecast", this._hourlyforecast, "hourlyforecast")}
+			${this.renderSwitchOption("Hourly tweak", this._hourlyforecast, "hourlyforecast")}
           </ul>
           <!-- -->
           <paper-input
