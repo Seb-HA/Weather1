@@ -33,6 +33,7 @@ const DefaultSensors = [
 const weatherIconsNight = {
   clear: "night",
   sunny: "night",
+  rainy: "rainy-5",
   partlycloudy: "cloudy-night-3",
   "windy-variant": "cloudy-night-3",
 };
