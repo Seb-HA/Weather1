@@ -509,7 +509,7 @@ class MeteofranceWeatherCard extends LitElement {
         <li>
           <ul class="flow-column day">
             <li>
-            ${isDaily
+            ${isHourly
         ? new Date(hourly.datetime).toLocaleDateString(lang, {
           weekday: "short",
         })
