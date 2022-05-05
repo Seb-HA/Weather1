@@ -476,8 +476,8 @@ class MeteofranceWeatherCard extends LitElement {
   }
   
   
-  renderHourlyForecast(hourlyforecast) {
-    if (!hourlyforecast || hourlyforecast.length === 0) {
+  renderHourlyForecast(forecast) {
+    if (!forecast || forecast.length === 0) {
       return html``;
     }
 
@@ -517,9 +517,6 @@ class MeteofranceWeatherCard extends LitElement {
             <li class="icon" style="background: none, url('${this.getWeatherIcon(
           hourly.condition.toLowerCase()
         )}') no-repeat; background-size: contain">
-            </li>
-            <li class="highTemp">
-            ${hourly.temperature}${this.getUnit("temperature")}
             </li>
           </ul>
         </li>`;
