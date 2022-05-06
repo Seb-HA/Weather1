@@ -72,7 +72,9 @@ Une fois choisi, sa configuration est la suivante :
 
 ![Weather Card Configuration](https://github.com/vingerha/lovelace-meteofrance-weather-card2/blob/Meteo-France/meteofrance-weather-card-editor.png)
 
-#### Configuration carte manuelle
+### Configuration carte manuelle
+
+![image](https://user-images.githubusercontent.com/44190435/167088813-baaf61e3-9277-432e-ae61-a2fa8e936653.png)
 
 Ci-dessous les éléments de configuration dans la carte si pas visible dans la page de configuration `nantes`:
 ```
