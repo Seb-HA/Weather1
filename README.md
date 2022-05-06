@@ -28,7 +28,7 @@ Les informations affichées :
 
 Un exemple de rendu :
 
-![Weather Card](https://github.com/hacf-fr/lovelace-meteofrance-weather-card/blob/Meteo-France/meteofrance-weather-card.png)
+![Weather Card](https://github.com/vingerha/lovelace-meteofrance-weather-card2/blob/Meteo-France/meteofrance-weather-card.png)
 
 ## Installation
 
@@ -42,7 +42,7 @@ Cette carte est prévue pour utiliser les entités de l'intégration [Météo Fr
 
 1. Depuis [HACS](https://hacs.xyz/) (Home Assistant Community Store), ouvrez le menu en haut à droite et utiliser l'option `Custom repositories` pour ajouter le dépôt de la carte.
 
-2. Ajoutez l'adresse <https://github.com/hacf-fr/lovelace-meteofrance-weather-card> avec pour catégorie `Lovelace`, et faire `ADD`. Le dépôt de la carte apparaît dans la liste.
+2. Ajoutez l'adresse <https://github.com/vingerha/lovelace-meteofrance-weather-card2> avec pour catégorie `Lovelace`, et faire `ADD`. Le dépôt de la carte apparaît dans la liste.
 
 3. Sélectionner ce dépôt (cette présentation de la carte va s'afficher dans une fenêtre) et utiliser l'option `INSTALL THIS REPOSITORY` en bas à droite de la fenêtre.
 
@@ -50,7 +50,7 @@ Cette carte est prévue pour utiliser les entités de l'intégration [Météo Fr
 
 5. Faire `RELOAD` pour terminer! La carte est maintenant prête à être utiliser dans votre tableau de bord.
 
-#### Configuration
+#### Configuration (ATTENTION, la selection des entité/autres entités est INSTABLE, voir en bas de cette page pour la fair manuellement)
 
 Vous trouverez la carte dans la liste des cartes personnalisées (en fin de liste) et avec pour nom `Carte Météo France par HACF`.
 
@@ -70,7 +70,7 @@ Une fois choisi, sa configuration est la suivante :
 
 7. `Enregistrer` votre configuration.
 
-![Weather Card Configuration](https://github.com/hacf-fr/lovelace-meteofrance-weather-card/blob/Meteo-France/meteofrance-weather-card-editor.png)
+![Weather Card Configuration](https://github.com/vingerha/lovelace-meteofrance-weather-card2/blob/Meteo-France/meteofrance-weather-card-editor.png)
 
 ### Installation manuelle (utilisateurs avancés)
 
@@ -88,11 +88,11 @@ Vous devez avoir accès au système de fichiers de HA. Plusieurs méthodes possi
 
 1. Préparer le chemin `www/community/` dans le dossier `config` de HA.
 
-2. Y créer le dossier `lovelace-meteofrance-weather-card/`.
+2. Y créer le dossier `lovelace-meteofrance-weather-card2/`.
 
 3. Depuis ce dépôt github, copier **le contenu** du dossier `dist/` dans le dossier précédemment créé.
 
-4. Maintenant depuis votre interface HA, allez dans `Configuration > Lovelace Dashboard > Resources` et créer une ressource de type `JavaScript Module` et pour url `/local/community/lovelace-meteofrance-weather-card/meteofrance-weather-card.js`.
+4. Maintenant depuis votre interface HA, allez dans `Configuration > Lovelace Dashboard > Resources` et créer une ressource de type `JavaScript Module` et pour url `/local/community/lovelace-meteofrance-weather-card2/meteofrance-weather-card2.js`.
 
    **_OU BIEN_** éditer votre fichier `ui_lovelace.yml` pour ajouter la ressource comme ceci :
 
@@ -133,33 +133,13 @@ view:
         forecast: true
 ```
 
-#### options avancées via YAML
-
-Ci-dessous les éléments de configuration pour masquer certains champs:
-
-Pour masquer les précipitations :
-```yaml
-hide_precipitation: true
-```
-
-Pour masquer certaines alertes:
-```yaml
-hide_alertVentViolent: true
-hide_alertPluieInondation: true
-hide_alertOrages: true
-hide_alertInondation: true
-hide_alertNeigeVerglas: true
-hide_alertCanicule: true
-hide_alertGrandFroid: true
-hide_alertAvalanches: true
-hide_alertVaguesSubmersion: true
-```
-
 ## Crédits
 
 Projet réalisé par la communauté de HACF et depuis les projets suivants :
 
 - la carte initiale [Lovelace animated weather card](https://github.com/bramkragten/weather-card) de [Bram Kragten](https://github.com/bramkragten).
+
+- son première adaption https://github.com/hacf-fr/lovelace-meteofrance-weather-card
 
 - les améliorations spécifiques à Météo France de la carte [Lovelace animated weather card](https://github.com/Imbuzi/meteo-france-weather-card) de [Nicolas Bourasseau](https://github.com/Imbuzi).
 
