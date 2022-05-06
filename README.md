@@ -72,65 +72,28 @@ Une fois choisi, sa configuration est la suivante :
 
 ![Weather Card Configuration](https://github.com/vingerha/lovelace-meteofrance-weather-card2/blob/Meteo-France/meteofrance-weather-card-editor.png)
 
-### Installation manuelle (utilisateurs avancés)
+#### Configuration carte manuelle
 
----
-
-Cette installation s'adresse aux utilisateurs plus aguerris et/ou utilisant le mode YAML pour la définition de leur tableau de bord Lovelace.
-
-La configuration se fait par défaut dans le fichier `ui-lovelace.yml` dans le dossier `config`.
-
-#### Prérequis
-
-Vous devez avoir accès au système de fichiers de HA. Plusieurs méthodes possibles, soit par SSH, soit via l'addon Samba par exemple.
-
-#### Installation de la carte 
-
-1. Préparer le chemin `www/community/` dans le dossier `config` de HA.
-
-2. Y créer le dossier `lovelace-meteofrance-weather-card2/`.
-
-3. Depuis ce dépôt github, copier **le contenu** du dossier `dist/` dans le dossier précédemment créé.
-
-4. Maintenant depuis votre interface HA, allez dans `Configuration > Lovelace Dashboard > Resources` et créer une ressource de type `JavaScript Module` et pour url `/local/community/lovelace-meteofrance-weather-card2/meteofrance-weather-card2.js`.
-
-   **_OU BIEN_** éditer votre fichier `ui_lovelace.yml` pour ajouter la ressource comme ceci :
-
-   ```yaml
-   lovelace:
-     mode: yaml
-     resources:
-       - url: /local/community/lovelace-meteofrance-weather-card2/meteofrance-weather-card2.js
-         type: module
-   ```
-
-5. Rafraichir votre navigateur avec CTRL+F5.
-
-#### Configuration via YAML
-
-Ci-dessous les éléments de configuration avec pour exemple l'usage d'une intégration nommée `nantes`:
-
-```yaml
-view:
-    cards:
-    - type: "custom:meteofrance-weather-card"
-        name: Nantes # nom de la carte, peut être différent du nom de l'intégration
-        entity: weather.nantes # Entité météo principale
-        # Les entités annexes de météo france
-        cloudCoverEntity: sensor.nantes_cloud_cover
-        rainChanceEntity: sensor.nantes_rain_chance
-        freezeChanceEntity: sensor.nantes_freeze_chance
-        snowChanceEntity: sensor.nantes_snow_chance
-        uvEntity: sensor.nantes_uv
-        rainForecastEntity: sensor.nantes_next_rain
-        alertEntity: sensor.44_weather_alert
-        number_of_forecasts: "5"
-        # Les switches pour afficher ou non les différentes zones.
-        current: true
-        details: true
-        one_hour_forecast: true
-        alert_forecast: true
-        forecast: true
+Ci-dessous les éléments de configuration dans la carte si pas visible dans la page de configuration `nantes`:
+```
+type: "custom:meteofrance-weather-card2"
+name: Nantes # nom de la carte, peut être différent du nom de l'intégration
+entity: weather.nantes # Entité météo principale
+# Les entités annexes de météo france
+cloudCoverEntity: sensor.nantes_cloud_cover
+rainChanceEntity: sensor.nantes_rain_chance
+freezeChanceEntity: sensor.nantes_freeze_chance
+snowChanceEntity: sensor.nantes_snow_chance
+uvEntity: sensor.nantes_uv
+rainForecastEntity: sensor.nantes_next_rain
+alertEntity: sensor.44_weather_alert
+number_of_forecasts: "5"
+# Les switches pour afficher ou non les différentes zones.
+current: true
+details: true
+one_hour_forecast: true
+alert_forecast: true
+forecast: true
 ```
 
 ## Crédits
