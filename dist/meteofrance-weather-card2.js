@@ -96,11 +96,11 @@ const rainForecastValues = new Map([
 
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "meteofrance-weather-card",
+  type: "meteofrance-weather-card2",
   name: "Carte Météo France",
   description: "Carte pour l'intégration Météo France.",
   preview: true,
-  documentationURL: "https://github.com/vingerha/lovelace-meteofrance-weather-card",
+  documentationURL: "https://github.com/vingerha/lovelace-meteofrance-weather-card2",
 });
 
 const fireEvent = (node, type, detail, options) => {
@@ -911,4 +911,4 @@ class MeteofranceWeatherCard extends LitElement {
       }`;
   }
 }
-customElements.define("meteofrance-weather-card", MeteofranceWeatherCard);
+customElements.define("meteofrance-weather-card2", MeteofranceWeatherCard);
