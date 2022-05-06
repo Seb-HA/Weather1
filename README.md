@@ -84,7 +84,7 @@ La configuration se fait par défaut dans le fichier `ui-lovelace.yml` dans le d
 
 Vous devez avoir accès au système de fichiers de HA. Plusieurs méthodes possibles, soit par SSH, soit via l'addon Samba par exemple.
 
-#### Installation de la carte
+#### Installation de la carte 
 
 1. Préparer le chemin `www/community/` dans le dossier `config` de HA.
 
@@ -100,7 +100,7 @@ Vous devez avoir accès au système de fichiers de HA. Plusieurs méthodes possi
    lovelace:
      mode: yaml
      resources:
-       - url: /local/community/lovelace-meteofrance-weather-card/meteofrance-weather-card.js
+       - url: /local/community/lovelace-meteofrance-weather-card2/meteofrance-weather-card2.js
          type: module
    ```
 
