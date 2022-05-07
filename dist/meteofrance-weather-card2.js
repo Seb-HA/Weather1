@@ -660,7 +660,7 @@ class MeteofranceWeatherCard extends LitElement {
     return `${this._config.icons
       ? this._config.icons
       : "/local/community/lovelace-meteofrance-weather-card2/icons/"
-      }${datetimehourly && datetimehourly > nextsetting && datetimehourly < nextrising
+      }${datetimehourly && ((datetimehourly > nextsetting && datetimehourly < nextrising) || (datetimehourly < nextsetting && datetimehourly < nextrising ))
         ? weatherIconsNight[condition]
         : weatherIconsDay[condition]
       }.svg`;
