@@ -1,5 +1,12 @@
 # Carte Lovelace Météo France
 
+## Ceci c'est un fork de https://github.com/hacf-fr/lovelace-meteofrance-weather-card
+Amélioration:
+- ajout de vitesse de vent pour les plages horaires
+- correction pour les icones de nuit (utilisant sun.sun : que pour la nuit actuel/prochain)
+
+## Ci-dessous la texte d'origine de hacf-fr
+
 [![HACS: Custom](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 - [Introduction](#Introduction)
