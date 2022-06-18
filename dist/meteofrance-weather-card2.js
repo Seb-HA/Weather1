@@ -4,7 +4,7 @@ const css = LitElement.prototype.css;
 
 const weatherIconsDay = {
   clear: "day",
-  "clear-night": "night",
+  clear-night: "night",
   cloudy: "cloudy",
   fog: "fog",
   hail: "rainy-7",
