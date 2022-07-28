@@ -4,7 +4,7 @@ const css = LitElement.prototype.css;
 
 const weatherIconsDay = {
   clear: "day",
-  clear-night: "night",
+  "clear-night": "night",
   cloudy: "cloudy",
   fog: "fog",
   hail: "rainy-7",
@@ -550,7 +550,7 @@ class MeteofranceWeatherCard extends LitElement {
 		hourly.wind_speed !== null
         ? html`
             <li class="wind_speed">
-            ${Math.round(hourly.wind_speed * 1)} ${this.getUnit("speed")} 
+            ${Math.round(hourly.wind_speed * 1)} ${this.getUnit("speed")}
             </li>
           `
         : ""}
