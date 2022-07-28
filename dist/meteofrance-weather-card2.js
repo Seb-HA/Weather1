@@ -430,6 +430,7 @@ class MeteofranceWeatherCard extends LitElement {
       </ul>`;
   }
 
+
   renderDailyForecast(daily, lang, isDaily) {
     return html`
         <li>
