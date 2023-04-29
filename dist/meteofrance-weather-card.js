@@ -417,7 +417,7 @@ class MeteofranceWeatherCard extends LitElement {
 				: 5
 			)
 			.map(
-			  (daily) => this.renderDailyForecast(daily, lang, isDaily)
+			  (daily) => this.renderDailyForecast(daily, lang, true)
 			)}
 	</ul>`; 
 		}
@@ -434,7 +434,7 @@ class MeteofranceWeatherCard extends LitElement {
 				: 5
 			)
 			.map(
-			  (hourly) => this.renderHourlyForecast(hourly, lang, isHourly)
+			  (hourly) => this.renderHourlyForecast(hourly, lang, true)
 			)}
 		  </ul>`;
 		}
