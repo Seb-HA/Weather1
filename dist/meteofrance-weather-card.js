@@ -407,20 +407,20 @@ class MeteofranceWeatherCard extends LitElement {
     const lang = this.hass.selectedLanguage || this.hass.language;
     const isDaily = this.isDailyForecast(forecast);
 
-	this.numberElements++;
-	return html`
-	  <ul class="flow-row forecast ${this.numberElements > 1 ? " spacer" : ""}">
-		${forecast
-		.slice(
-		  0,
-		  this._config.number_of_forecasts
-			? this._config.number_of_forecasts
-			: 5
-		)
-		.map(
-		  (daily) => this.renderDailyForecast(daily, lang, isDaily)
-		)}
-		</ul>`; 
+    this.numberElements++;
+    return html`
+      <ul class="flow-row forecast ${this.numberElements > 1 ? " spacer" : ""}">
+        ${forecast
+        .slice(
+          0,
+          this._config.number_of_forecasts
+            ? this._config.number_of_forecasts
+            : 5
+        )
+        .map(
+          (daily) => this.renderDailyForecast(daily, lang, isDaily)
+        )}
+      </ul>`;
   }
 
   renderDailyForecast(daily, lang, isDaily) {
@@ -444,7 +444,7 @@ class MeteofranceWeatherCard extends LitElement {
             <li class="highTemp">
             ${daily.temperature}${this.getUnit("temperature")}
             </li>
-          ${daily.templow !== undefined && isDaily
+          ${daily.templow !== undefined
         ? html`
             <li class="lowTemp">
             ${daily.templow}${this.getUnit("temperature")}
