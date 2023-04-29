@@ -405,21 +405,39 @@ class MeteofranceWeatherCard extends LitElement {
 
     const lang = this.hass.selectedLanguage || this.hass.language;
     const isDaily = this.isDailyForecast(forecast);
-
-    this.numberElements++;
-    return html`
-      <ul class="flow-row forecast ${this.numberElements > 1 ? " spacer" : ""}">
-        ${forecast
-        .slice(
-          0,
-          this._config.number_of_forecasts
-            ? this._config.number_of_forecasts
-            : 5
-        )
-        .map(
-          (daily) => this.renderDailyForecast(daily, lang, isDaily)
-        )}
-      </ul>`;
+	if (isDaily) {
+		this.numberElements++;
+		return html`
+		  <ul class="flow-row forecast ${this.numberElements > 1 ? " spacer" : ""}">
+			${forecast
+			.slice(
+			  0,
+			  this._config.number_of_forecasts
+				? this._config.number_of_forecasts
+				: 5
+			)
+			.map(
+			  (daily) => this.renderDailyForecast(daily, lang, isDaily)
+			)}
+	</ul>`; 
+		}
+	else
+		{
+		this.numberElements++;
+		return html`
+		  <ul class="flow-row forecast ${this.numberElements > 1 ? " spacer" : ""}">
+			${forecast
+			.slice(
+			  0,
+			  this._config.number_of_forecasts
+				? this._config.number_of_forecasts
+				: 5
+			)
+			.map(
+			  (hourly) => this.renderHourlyForecast(hourly, lang, isHourly)
+			)}
+		  </ul>`;
+		}
   }
 
   renderDailyForecast(daily, lang, isDaily) {
@@ -475,6 +493,54 @@ class MeteofranceWeatherCard extends LitElement {
   isDailyForecast(forecast) {
     const diff = new Date(forecast[1].datetime) - new Date(forecast[0].datetime);
     return diff > 3600000;
+  }
+  renderHourlyForecast(hourly, lang, isHourly) {
+    return html`
+        <li>
+          <ul class="flow-column day">
+            <li>
+            ${isHourly
+        ? new Date(hourly.datetime).toLocaleDateString(lang, {
+          weekday: "short",
+        })
+        : new Date(hourly.datetime).toLocaleTimeString(lang, {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
+            </li>
+            <li class="icon" style="background: none, url('${this.getWeatherIconHourly(
+          hourly.condition.toLowerCase(),hourly.datetime
+        )}') no-repeat; background-size: contain">
+            </li>
+			<li class="highTemp">
+            ${hourly.temperature}${this.getUnit("temperature")}
+            </li>
+          ${hourly.templow !== undefined
+        ? html`
+            <li class="lowTemp">
+            ${hourly.templow}${this.getUnit("temperature")}
+            </li>
+          `
+        : ""}
+          ${!this._config.hide_precipitation &&
+        hourly.precipitation !== undefined &&
+        hourly.precipitation !== null
+        ? html`
+            <li class="precipitation">
+              ${Math.round(hourly.precipitation * 10) / 10} ${this.getUnit("precipitation")}
+            </li>
+          `
+        : ""}
+          ${hourly.wind_speed !== undefined &&
+		hourly.wind_speed !== null
+        ? html`
+            <li class="wind_speed">
+            ${Math.round(hourly.wind_speed * 3.6)} ${this.getUnit("speed")}
+            </li>
+          `
+        : ""}
+          </ul>
+        </li>`;
   }
 
   getOneHourForecast(rainForecastEntity) {
