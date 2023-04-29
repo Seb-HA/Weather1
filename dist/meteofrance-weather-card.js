@@ -508,7 +508,7 @@ class MeteofranceWeatherCard extends LitElement {
           minute: "2-digit",
         })}
             </li>
-            <li class="icon" style="background: none, url('${this.getWeatherIconHourly(
+            <li class="icon" style="background: none, url('${this.getWeatherIcon(
           hourly.condition.toLowerCase(),hourly.datetime
         )}') no-repeat; background-size: contain">
             </li>
