@@ -30,6 +30,7 @@ const DefaultSensors = [
   ["rainForecastEntity", "_next_rain"]
 ];
 
+
 const weatherIconsNight = {
   ...weatherIconsDay,
   clear: "night",
