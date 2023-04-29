@@ -418,7 +418,7 @@ class MeteofranceWeatherCard extends LitElement {
 				: 5
 			)
 			.map(
-			  (daily) => this.renderDailyForecast(daily, lang, true)
+			  (daily) => this.renderDailyForecast(daily, lang, isDaily)
 			)}
 	</ul>`; 
 		}
@@ -435,7 +435,7 @@ class MeteofranceWeatherCard extends LitElement {
 				: 5
 			)
 			.map(
-			  (hourly) => this.renderHourlyForecast(hourly, lang, true)
+			  (hourly) => this.renderHourlyForecast(hourly, lang, isDaily)
 			)}
 		  </ul>`;
 		}
@@ -495,12 +495,12 @@ class MeteofranceWeatherCard extends LitElement {
     const diff = new Date(forecast[1].datetime) - new Date(forecast[0].datetime);
     return diff > 3600000;
   }
-  renderHourlyForecast(hourly, lang, isHourly) {
+  renderHourlyForecast(hourly, lang, isDaily) {
     return html`
         <li>
           <ul class="flow-column day">
             <li>
-            ${isHourly
+            ${isDaily
         ? new Date(hourly.datetime).toLocaleDateString(lang, {
           weekday: "short",
         })
