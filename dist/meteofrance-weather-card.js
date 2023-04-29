@@ -495,12 +495,12 @@ class MeteofranceWeatherCard extends LitElement {
     const diff = new Date(forecast[1].datetime) - new Date(forecast[0].datetime);
     return diff > 3600000;
   }
-  renderHourlyForecast(hourly, lang, isDaily) {
+  renderHourlyForecast(hourly, lang, isHourly) {
     return html`
         <li>
           <ul class="flow-column day">
             <li>
-            ${isDaily
+            ${isHourly
         ? new Date(hourly.datetime).toLocaleDateString(lang, {
           weekday: "short",
         })
