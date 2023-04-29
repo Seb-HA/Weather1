@@ -515,13 +515,6 @@ class MeteofranceWeatherCard extends LitElement {
 			<li class="highTemp">
             ${hourly.temperature}${this.getUnit("temperature")}
             </li>
-          ${hourly.templow !== undefined
-        ? html`
-            <li class="lowTemp">
-            ${hourly.templow}${this.getUnit("temperature")}
-            </li>
-          `
-        : ""}
           ${!this._config.hide_precipitation &&
         hourly.precipitation !== undefined &&
         hourly.precipitation !== null
