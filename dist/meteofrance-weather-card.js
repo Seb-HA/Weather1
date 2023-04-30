@@ -559,6 +559,8 @@ class MeteofranceWeatherCard extends LitElement {
   }
 
   getWeatherIcon(condition, datetimehourly) {
+	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting
+	var nextrising = this.hass.states["sun.sun"].attributes.next_rising 
     return `${this._config.icons
       ? this._config.icons
       : "/local/community/lovelace-meteofrance-weather-card/icons/"
