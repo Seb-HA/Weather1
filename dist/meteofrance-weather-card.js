@@ -558,21 +558,7 @@ class MeteofranceWeatherCard extends LitElement {
     return phenomenaList;
   }
 
-  getWeatherIcon2(condition, datetimehourly) {
-	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting
-	var nextrising = this.hass.states["sun.sun"].attributes.next_rising  
-    return `${this._config.icons
-      ? this._config.icons
-      : "/local/community/lovelace-meteofrance-weather-card/icons/"
-      }${datetimehourly && ((datetimehourly > nextsetting && datetimehourly < nextrising) || (datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))
-        ? weatherIconsNight[condition]
-        : weatherIconsDay[condition]
-      }.svg`;
-  }
-
   getWeatherIcon(condition, datetimehourly) {
-	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting
-	var nextrising = this.hass.states["sun.sun"].attributes.next_rising  
     return `${this._config.icons
       ? this._config.icons
       : "/local/community/lovelace-meteofrance-weather-card/icons/"
@@ -589,7 +575,6 @@ class MeteofranceWeatherCard extends LitElement {
 		return true;
 	}
 	return false;
-		
   }
 
   getPhenomenaText(phenomena, sun) {
