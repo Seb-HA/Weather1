@@ -574,8 +574,6 @@ class MeteofranceWeatherCard extends LitElement {
 	  return `${datetimehourly && 
 		((datetimehourly > nextsetting && datetimehourly < nextrising) || 
 			(datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))
-			? true
-			: false
 	  }`;
   }
 
