@@ -558,7 +558,7 @@ class MeteofranceWeatherCard extends LitElement {
     return phenomenaList;
   }
 
-  getWeatherIcon(condition, datetimehourly) {
+  getWeatherIcon2(condition, datetimehourly) {
 	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting
 	var nextrising = this.hass.states["sun.sun"].attributes.next_rising  
     return `${this._config.icons
@@ -569,13 +569,24 @@ class MeteofranceWeatherCard extends LitElement {
         : weatherIconsDay[condition]
       }.svg`;
   }
+
+  getWeatherIcon(condition, datetimehourly) {
+	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting
+	var nextrising = this.hass.states["sun.sun"].attributes.next_rising  
+    return `${this._config.icons
+      ? this._config.icons
+      : "/local/community/lovelace-meteofrance-weather-card/icons/"
+      }${isNightTime(datetimehourly)
+        ? weatherIconsNight[condition]
+        : weatherIconsDay[condition]
+      }.svg`;
+  }
+
   
   isNightTime(datetimehourly) {
 	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting
 	var nextrising = this.hass.states["sun.sun"].attributes.next_rising 
-	  return `${datetimehourly && 
-		((datetimehourly > nextsetting && datetimehourly < nextrising) || 
-			(datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))
+	  return `${datetimehourly && ((datetimehourly > nextsetting && datetimehourly < nextrising) || (datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))
 	  }`;
   }
 
