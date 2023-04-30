@@ -133,6 +133,17 @@ function hasConfigOrEntityChanged(element, changedProps) {
   return true;
 }
 
+function isNightTime(datetimehourly) {
+	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting
+	var nextrising = this.hass.states["sun.sun"].attributes.next_rising 
+	if (datetimehourly)
+		return (
+		((datetimehourly > nextsetting && datetimehourly < nextrising) || 
+			(datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))) 
+  }
+  return false;
+	
+
 class MeteofranceWeatherCard extends LitElement {
   static get properties() {
     return {
@@ -568,13 +579,13 @@ class MeteofranceWeatherCard extends LitElement {
       }.svg`;
   }
   
-  isNightTime(datetimehourly) {
+  isNightTime222(datetimehourly) {
 	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting
 	var nextrising = this.hass.states["sun.sun"].attributes.next_rising 
-	  return ${datetimehourly && 
+	  return `${datetimehourly && 
 		((datetimehourly > nextsetting && datetimehourly < nextrising) || 
 			(datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))
-	  };
+	  }`;
   }
 
   getPhenomenaText(phenomena, sun) {
