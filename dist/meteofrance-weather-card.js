@@ -136,11 +136,9 @@ function hasConfigOrEntityChanged(element, changedProps) {
 function isNightTime(datetimehourly) {
 	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting ;
 	var nextrising = this.hass.states["sun.sun"].attributes.next_rising ;
-	console.log("Datetime: " + datetime)
 	if (datetimehourly &&
 		((datetimehourly > nextsetting && datetimehourly < nextrising) || 
 			(datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))) {
-				console.log("True");
 		return true;	
 			}
 	return false;
