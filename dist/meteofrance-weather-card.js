@@ -136,12 +136,14 @@ function hasConfigOrEntityChanged(element, changedProps) {
 function isNightTime(datetimehourly) {
 	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting
 	var nextrising = this.hass.states["sun.sun"].attributes.next_rising 
-	if (datetimehourly)
+	if (datetimehourly) {
 		return (
 		((datetimehourly > nextsetting && datetimehourly < nextrising) || 
-			(datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))) 
-  }
-  return false;
+			(datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting)));
+		}
+	return false;
+}
+  
 	
 
 class MeteofranceWeatherCard extends LitElement {
