@@ -564,10 +564,17 @@ class MeteofranceWeatherCard extends LitElement {
     return `${this._config.icons
       ? this._config.icons
       : "/local/community/lovelace-meteofrance-weather-card/icons/"
-      }${datetimehourly && ((datetimehourly > nextsetting && datetimehourly < nextrising) || (datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))
+      }${isNightTime(datetimehourly)
         ? weatherIconsNight[condition]
         : weatherIconsDay[condition]
       }.svg`;
+  }
+  
+  isNightTime(datetimehourly) {
+	  return `${datetimehourly && 
+		((datetimehourly > nextsetting && datetimehourly < nextrising) || 
+			(datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))
+	  }`;
   }
 
   getPhenomenaText(phenomena, sun) {
