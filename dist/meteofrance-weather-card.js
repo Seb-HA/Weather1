@@ -31,11 +31,11 @@ const DefaultSensors = [
 ];
 
 const weatherIconsNight = {
-  ...weatherIconsDay,
   clear: "night",
   sunny: "night",
   partlycloudy: "cloudy-night-3",
   "windy-variant": "cloudy-night-3",
+  ...weatherIconsDay,
 };
 
 const windDirections = [
