@@ -577,10 +577,10 @@ class MeteofranceWeatherCard extends LitElement {
       next_rising = new Date(sun.attributes.next_rising);
       next_setting = new Date(sun.attributes.next_setting);
     }
-
-    const thistime = datetimehourly ? new Date(datetimehourly) : new Date()
-
-    return ((datetimehourly > nextsetting && datetimehourly  < nextrising) || (datetimehourly  < nextsetting && datetimehourly  < nextrising && nextrising < nextsetting)) 
+	if (datetimehourly && ((datetimehourly > nextsetting && datetimehourly < nextrising) || (datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))) {
+		return true;
+	}
+	return false;
   }
 
 
