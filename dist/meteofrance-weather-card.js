@@ -569,8 +569,15 @@ class MeteofranceWeatherCard extends LitElement {
   }
 
   isNightTime(datetimehourly) {
-	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting
-	var nextrising = this.hass.states["sun.sun"].attributes.next_rising 
+	const sun = this.hass.states["sun.sun"];
+    let next_rising;
+    let next_setting;
+
+    if (sun) {
+      next_rising = sun.attributes.next_rising;
+      next_setting = sun.attributes.next_setting;
+    }
+	
 	if (datetimehourly && ((datetimehourly > nextsetting && datetimehourly < nextrising) || (datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))) {
 		return true;
 	}
