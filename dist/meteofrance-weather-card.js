@@ -580,7 +580,7 @@ class MeteofranceWeatherCard extends LitElement {
 
     const thistime = datetimehourly ? new Date(datetimehourly) : new Date()
 
-    return ((thistime > nextsetting && thistime < nextrising) || (thistime < nextsetting && thistime < nextrising && nextrising < nextsetting)) 
+    return ((datetimehourly > nextsetting && datetimehourly  < nextrising) || (datetimehourly  < nextsetting && datetimehourly  < nextrising && nextrising < nextsetting)) 
   }
 
 
