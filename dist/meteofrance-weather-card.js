@@ -422,7 +422,6 @@ class MeteofranceWeatherCard extends LitElement {
   }
 
   renderDailyForecast(daily, lang, isDaily) {
-	const isNight = this.isNightTime(daily.datetime)
     return html`
         <li>
           <ul class="flow-column day">
@@ -437,7 +436,7 @@ class MeteofranceWeatherCard extends LitElement {
         })}
             </li>
             <li class="icon" style="background: none, url('${this.getWeatherIcon(
-          daily.condition.toLowerCase(), isDaily, isNight
+          daily.condition.toLowerCase(), isDaily, this.isNightTime(daily.datetime)
         )}') no-repeat; background-size: contain">
             </li>
             <li class="highTemp">
@@ -571,10 +570,13 @@ class MeteofranceWeatherCard extends LitElement {
 
   isNightTime(datetimehourly) {
     const sun = this.hass.states["sun.sun"];
-    if (!sun) { return false}
+    let next_rising;
+    let next_setting;
 
-    let next_rising = new Date(sun.attributes.next_rising);
-    let next_setting = new Date(sun.attributes.next_setting);
+    if (sun) {
+      next_rising = new Date(sun.attributes.next_rising);
+      next_setting = new Date(sun.attributes.next_setting);
+    }
 
     const thistime = datetimehourly ? new Date(datetimehourly) : new Date()
 
