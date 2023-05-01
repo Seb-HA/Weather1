@@ -576,6 +576,7 @@ class MeteofranceWeatherCard extends LitElement {
 	}
 	return false;
   }
+  
 
 
   getPhenomenaText(phenomena, sun) {
