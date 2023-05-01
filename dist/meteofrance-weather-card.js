@@ -436,7 +436,7 @@ class MeteofranceWeatherCard extends LitElement {
         })}
             </li>
             <li class="icon" style="background: none, url('${this.getWeatherIcon(
-          daily.condition.toLowerCase(),daily.datetime
+          daily.condition.toLowerCase(),daily.datetime, isDaily
         )}') no-repeat; background-size: contain">
             </li>
             <li class="highTemp">
@@ -558,11 +558,11 @@ class MeteofranceWeatherCard extends LitElement {
     return phenomenaList;
   }
 
-  getWeatherIcon(condition, datetimehourly) {
+  getWeatherIcon(condition, datetimehourly, isDaily) {
     return `${this._config.icons
       ? this._config.icons
       : "/local/community/lovelace-meteofrance-weather-card/icons/"
-      }${this.isNightTime(datetimehourly)
+      }${!isDaily && this.isNightTime(datetimehourly)
         ? weatherIconsNight[condition]
         : weatherIconsDay[condition]
       }.svg`;
