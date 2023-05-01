@@ -422,6 +422,7 @@ class MeteofranceWeatherCard extends LitElement {
   }
 
   renderDailyForecast(daily, lang, isDaily) {
+	const isNight = this.isNightTime(daily.datetime)
     return html`
         <li>
           <ul class="flow-column day">
@@ -436,7 +437,7 @@ class MeteofranceWeatherCard extends LitElement {
         })}
             </li>
             <li class="icon" style="background: none, url('${this.getWeatherIcon(
-          daily.condition.toLowerCase(),daily.datetime, isDaily
+          daily.condition.toLowerCase(),daily.datetime, isDaily, isNight
         )}') no-repeat; background-size: contain">
             </li>
             <li class="highTemp">
@@ -558,24 +559,28 @@ class MeteofranceWeatherCard extends LitElement {
     return phenomenaList;
   }
 
-  getWeatherIcon(condition, datetimehourly, isDaily) {
+  getWeatherIcon(condition, datetimehourly, isDaily, isNight) {
     return `${this._config.icons
       ? this._config.icons
       : "/local/community/lovelace-meteofrance-weather-card/icons/"
-      }${!isDaily && this.isNightTime(datetimehourly)
+      }${!isDaily && isNight
         ? weatherIconsNight[condition]
         : weatherIconsDay[condition]
       }.svg`;
   }
 
   isNightTime(datetimehourly) {
-	var nextsetting = this.hass.states["sun.sun"].attributes.next_setting
-	var nextrising = this.hass.states["sun.sun"].attributes.next_rising 
-	if (datetimehourly && ((datetimehourly > nextsetting && datetimehourly < nextrising) || (datetimehourly < nextsetting && datetimehourly < nextrising && nextrising < nextsetting))) {
-		return true;
-	}
-	return false;
+    const sun = this.hass.states["sun.sun"];
+    if (!sun) { return false}
+
+    let next_rising = new Date(sun.attributes.next_rising);
+    let next_setting = new Date(sun.attributes.next_setting);
+
+    const thistime = datetimehourly ? new Date(datetimehourly) : new Date()
+
+    return ((thistime > nextsetting && thistime < nextrising) || (thistime < nextsetting && thistime < nextrising && nextrising < nextsetting))) 
   }
+
 
   getPhenomenaText(phenomena, sun) {
     return `${sun && sun.state == "below_horizon"
