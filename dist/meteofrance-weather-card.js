@@ -436,7 +436,7 @@ class MeteofranceWeatherCard extends LitElement {
         })}
             </li>
             <li class="icon" style="background: none, url('${this.getWeatherIcon(
-          daily.condition.toLowerCase(), isDaily, this.isNightTime(daily.datetime)
+          daily.condition.toLowerCase(), this.isNightTime(isDaily, daily.datetime)
         )}') no-repeat; background-size: contain">
             </li>
             <li class="highTemp">
@@ -558,19 +558,19 @@ class MeteofranceWeatherCard extends LitElement {
     return phenomenaList;
   }
 
-  getWeatherIcon(condition, isDaily, isNight) {
+  getWeatherIcon(condition, isNight) {
     return `${this._config.icons
       ? this._config.icons
       : "/local/community/lovelace-meteofrance-weather-card/icons/"
-      }${!isDaily && isNight
+      }${isNight
         ? weatherIconsNight[condition]
         : weatherIconsDay[condition]
       }.svg`;
   }
 
-  isNightTime(datetimehourly) {
+  isNightTime(isDaily, datetimehourly) {
     const sun = this.hass.states["sun.sun"];
-    if (!sun) { return false}
+    if (!sun || isDaily ) { return false}
 
     let nextrising = new Date(sun.attributes.next_rising);
     let nextsetting = new Date(sun.attributes.next_setting);
