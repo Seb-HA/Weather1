@@ -495,10 +495,7 @@ class MeteofranceWeatherCard extends LitElement {
         ></li>
 		<li
           class="icon"
-          style="background: none, url('${this.getWeatherIcon(
-            daily.condition.toLowerCase(),
-            !isDaily && this.isNightTime(daily.datetime)
-          )}') no-repeat; background-size: contain; transform: rotate(90deg) "
+          style="background: none, url('/local/community/lovelace-meteofrance-weather-card/icons/test.svg') no-repeat; background-size: contain"
         ></li>
         <li class="highTemp">
           ${daily.temperature}${this.getUnit("temperature")}
