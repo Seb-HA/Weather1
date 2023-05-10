@@ -493,10 +493,6 @@ class MeteofranceWeatherCard extends LitElement {
             !isDaily && this.isNightTime(daily.datetime)
           )}') no-repeat; background-size: contain"
         ></li>
-		<li
-          class="icon"
-  style="background: none, url('/local/community/lovelace-meteofrance-weather-card/icons/arrow-north-static.svg') ; background-size: contain; transform: rotate(${180 - daily.wind_bearing}deg)"
-        ></li>
         <li class="highTemp">
           ${daily.temperature}${this.getUnit("temperature")}
         </li>
@@ -532,6 +528,9 @@ class MeteofranceWeatherCard extends LitElement {
               <li class="wind_speed">
                 ${Math.round(daily.wind_speed)} ${this.getUnit("speed")}
               </li>
+			  <li class="icon"
+				style="background: none, url('/local/community/lovelace-meteofrance-weather-card/icons/arrow-north-static.svg') ; background-size: contain; transform: rotate(${180 - daily.wind_bearing}deg)">
+			  </li>
             `
           : ""}
       </ul>
