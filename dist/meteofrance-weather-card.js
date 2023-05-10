@@ -533,7 +533,7 @@ class MeteofranceWeatherCard extends LitElement {
         ${daily.wind_bearing !== undefined && daily.wind_bearing !== null
           ? html`			
 			<li class="icon"
-				style="background: none, url('/local/community/lovelace-meteofrance-weather-card/icons/arrow-north-static.svg'); background-size: contain; transform: rotate(${daily.wind_bearing + 180}deg) scale(0.5)">
+				style="background: none, url('/local/community/lovelace-meteofrance-weather-card/icons/arrow-north-static.svg'); background-size: contain; transform: rotate(${daily.wind_bearing + 180}deg) scale(0.5); color: var(--paper-item-icon-color)">
 			  </li>
 			  `
            : ""}
