@@ -493,6 +493,13 @@ class MeteofranceWeatherCard extends LitElement {
             !isDaily && this.isNightTime(daily.datetime)
           )}') no-repeat; background-size: contain"
         ></li>
+		<li
+          class="icon"
+          style="background: none, url('${this.getWeatherIcon(
+            daily.condition.toLowerCase(),
+            !isDaily && this.isNightTime(daily.datetime)
+          )}') no-repeat; background-size: contain"
+        ></li>
         <li class="highTemp">
           ${daily.temperature}${this.getUnit("temperature")}
         </li>
