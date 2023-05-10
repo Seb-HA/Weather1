@@ -495,10 +495,10 @@ class MeteofranceWeatherCard extends LitElement {
         ></li>
 		<li
           class="icon"
-          style="transform: rotate(90deg), background: none, url('${this.getWeatherIcon(
+          style="background: none, url('${this.getWeatherIcon(
             daily.condition.toLowerCase(),
             !isDaily && this.isNightTime(daily.datetime)
-          )}') no-repeat; background-size: contain"
+          )}') no-repeat; background-size: contain; transform: rotate(90deg) "
         ></li>
         <li class="highTemp">
           ${daily.temperature}${this.getUnit("temperature")}
