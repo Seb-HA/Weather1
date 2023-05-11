@@ -537,6 +537,13 @@ class MeteofranceWeatherCard extends LitElement {
 			  </li>
 			  `
            : ""}
+		${daily.wind_bearing !== undefined && daily.wind_bearing == null
+          ? html`			
+			<li class="icon"
+				style="background: none, url('/local/community/lovelace-meteofrance-weather-card/icons/no-wind-bearing-static.svg'); background-size: contain; transform:  scale(0.5)">
+			  </li>
+			  `
+           : ""}
       </ul>
     </li>`;
   }
