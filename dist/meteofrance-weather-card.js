@@ -513,7 +513,7 @@ class MeteofranceWeatherCard extends LitElement {
               </li>
             `
           : ""}
-        ${!this._config.humidity_forecast &&
+        ${this._config.humidity_forecast &&
         daily.humidity !== undefined &&
         daily.humidity !== null
           ? html`
@@ -762,6 +762,8 @@ class MeteofranceWeatherCard extends LitElement {
       case "precipitation":
         return lengthUnit === "km" ? "mm" : "in";
       case "precipitation_probability":
+        return "%";
+	  case "humidity":
         return "%";
       case "speed":
         return lengthUnit === "km" ? "km/h" : "mph";
