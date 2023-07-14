@@ -185,7 +185,12 @@ export class MeteofranceWeatherCardEditor extends LitElement {
               "Show wind icons",
               this._wind_forecast_icons,
               "wind_forecast_icons"
-            )}			
+            )}	
+            ${this.renderSwitchOption(
+              "Show humidity forecast",
+              this._humidity_forecast,
+              "humidity_forecast"
+            )}					
           </ul>
           <!-- -->
           <paper-input
