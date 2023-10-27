@@ -18,6 +18,10 @@ if (
   customElements.define("ha-switch", customElements.get("paper-toggle-button"));
 }
 
+if (!customElements.get("ha-entity-picker")) {
+  (customElements.get("hui-entities-card")).getConfigElement();
+}
+
 const LitElement = customElements.get("hui-masonry-view")
   ? Object.getPrototypeOf(customElements.get("hui-masonry-view"))
   : Object.getPrototypeOf(customElements.get("hui-view"));
@@ -89,6 +93,10 @@ export class MeteofranceWeatherCardEditor extends LitElement {
   get _wind_forecast_icons() {
     return this._config.wind_forecast_icons !== false;
   }
+  
+  get _humidity_forecast() {
+    return this._config.humidity_forecast !== false;
+  }  
   // Config value
   get _alertEntity() {
     return this._config.alertEntity || "";
@@ -185,7 +193,12 @@ export class MeteofranceWeatherCardEditor extends LitElement {
               "Show wind icons",
               this._wind_forecast_icons,
               "wind_forecast_icons"
-            )}			
+            )}	
+            ${this.renderSwitchOption(
+              "Show humidity forecast",
+              this._humidity_forecast,
+              "humidity_forecast"
+            )}					
           </ul>
           <!-- -->
           <paper-input
