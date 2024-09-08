@@ -587,7 +587,7 @@ class MeteofranceWeatherCard extends LitElement {
     const isDaily = forecast.type === "daily" ;
 
     this.numberElements++;
-    return html` <ul
+    return html`  <div style="overflow-x:auto;"> <ul
       class="flow-row forecast ${this.numberElements > 1 ? " spacer" : ""}"
     >
       ${forecast.forecast
@@ -598,7 +598,7 @@ class MeteofranceWeatherCard extends LitElement {
             : 5
         )
         .map((daily) => this.renderDailyForecast(daily, lang, isDaily))}
-    </ul>`;
+    </ul></div>`;
   }
 
   renderDailyForecast(daily, lang, isDaily) {
@@ -608,6 +608,17 @@ class MeteofranceWeatherCard extends LitElement {
           ${isDaily
             ? new Date(daily.datetime).toLocaleDateString(lang, {
                 weekday: "short",
+              })
+            : new Date(daily.datetime).toLocaleDateString(lang, {
+                weekday: "short",
+                day: "numeric",
+              })}
+        </li>
+        <li>
+          ${isDaily
+            ? new Date(daily.datetime).toLocaleDateString(lang, {
+                day: "numeric",
+                month: "short",
               })
             : new Date(daily.datetime).toLocaleTimeString(lang, {
                 hour: "2-digit",
@@ -1101,6 +1112,7 @@ class MeteofranceWeatherCard extends LitElement {
 
       .forecast ul.day {
         align-items: center;
+        width: 8ch;
       }
 
       .forecast ul.day > *:first-child {
